@@ -150,6 +150,17 @@ pub struct Series {
 
 /// Runs every quantity of `experiment`.
 ///
+/// ```
+/// use aporia::{Confidence, RunConfig, Trials, run};
+/// use aporia::experiments::Birthday;
+/// let config = RunConfig { trials: Trials::new(10_000)?, seed: 1, confidence: Confidence::P95 };
+/// let report = run(&Birthday::new(23, 365)?, &config)?;
+/// let q = &report.quantities[0];
+/// assert_eq!(q.attempted, 10_000);
+/// assert!(q.estimate.lower < q.estimate.upper);
+/// # Ok::<(), aporia::Error>(())
+/// ```
+///
 /// # Errors
 /// Fails if a quantity fails to draw or accepts too few samples.
 pub fn run(experiment: &dyn Experiment, config: &RunConfig) -> Result<Report> {
