@@ -2,11 +2,17 @@
 
 mod bertrand;
 mod birthday;
+pub mod braess;
 mod monty_hall;
+mod parrondo;
+pub mod penney;
 
 pub use bertrand::{Bertrand, Chord, Method};
 pub use birthday::Birthday;
+pub use braess::{Braess, Network, Route};
 pub use monty_hall::{Host, MontyHall};
+pub use parrondo::{Parrondo, Policy};
+pub use penney::Penney;
 
 use crate::engine::Experiment;
 
@@ -14,7 +20,7 @@ use crate::engine::Experiment;
 ///
 /// ```
 /// let ids: Vec<_> = aporia::experiments::all().iter().map(|e| e.id()).collect();
-/// assert_eq!(ids, ["monty-hall", "birthday", "bertrand"]);
+/// assert_eq!(ids, ["monty-hall", "birthday", "bertrand", "penney", "parrondo", "braess"]);
 /// ```
 #[must_use]
 pub fn all() -> Vec<Box<dyn Experiment>> {
@@ -22,6 +28,9 @@ pub fn all() -> Vec<Box<dyn Experiment>> {
         Box::new(MontyHall::default()),
         Box::new(Birthday::default()),
         Box::new(Bertrand),
+        Box::new(Penney::default()),
+        Box::new(Parrondo::default()),
+        Box::new(Braess::default()),
     ]
 }
 

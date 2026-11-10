@@ -77,6 +77,14 @@ impl Sequence {
         Ok(Self { bits, len })
     }
 
+    /// Compile-time constructor for literals inside the crate.
+    ///
+    /// The caller guarantees `1 ≤ len ≤ MAX_LEN` and `bits < 2^len`; it is
+    /// only used with constant arguments that satisfy this.
+    pub(crate) const fn from_bits_const(bits: u32, len: u32) -> Self {
+        Self { bits, len }
+    }
+
     /// Bit pattern, first symbol most significant, `T = 1`.
     #[must_use]
     pub fn bits(self) -> u32 {
