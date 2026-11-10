@@ -144,7 +144,7 @@ impl Experiment for Birthday {
     }
 
     fn lesson(&self) -> String {
-        "A shared birthday needs only one matching pair, and the number of pairs, n(n - 1)/2, \
+        "A shared birthday needs only one matching pair, and the number of pairs, n(n-1)/2, \
          grows quadratically: 23 people already form 253 pairs."
             .to_owned()
     }

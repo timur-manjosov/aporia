@@ -347,7 +347,7 @@ impl Experiment for Braess {
         if with.is_some() {
             notes.push(format!(
                 "With the shortcut, a driver leaving S-A-B-T for S-A-T or S-B-T would pay \
-                 N/100 + 45 = {:.4} minutes instead of N/50 = {:.4}.",
+                 N/100+45 = {:.4} minutes instead of N/50 = {:.4}.",
                 f64::from(self.drivers) / 100.0 + 45.0,
                 f64::from(self.drivers) / 50.0
             ));

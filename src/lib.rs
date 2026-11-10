@@ -32,6 +32,7 @@ pub mod params;
 pub mod render;
 pub mod rng;
 pub mod stats;
+pub mod svg;
 
 pub use engine::{Experiment, Quantity, Report, RunConfig, Sample, run, run_with_checkpoints};
 pub use error::{Error, Result};

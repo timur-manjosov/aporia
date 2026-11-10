@@ -228,9 +228,9 @@ impl Experiment for MontyHall {
         match self.host {
             Host::Knowing => "The information is in the host's knowledge, not in the revealed \
                 goat. A knowing host never opens the car, so the probability that the first \
-                pick was wrong is concentrated on the doors he left closed."
+                pick was wrong is concentrated on the doors the host left closed."
                 .to_owned(),
-            Host::Ignorant => "With an ignorant host it really is 50/50 (in general 1/(n - k) \
+            Host::Ignorant => "With an ignorant host it really is 50/50 (in general 1/(n-k) \
                 per closed door): a goat revealed by chance carries no information about \
                 which closed door hides the car. The information was in the knowledge, \
                 not in the goat."
@@ -260,12 +260,12 @@ impl Experiment for MontyHall {
     fn notes(&self) -> Vec<String> {
         match self.host {
             Host::Knowing => vec![format!(
-                "Switching multiplies the chance of winning by (n - 1)/(n - k - 1) = {:.6}.",
+                "Switching wins (n-1)/(n-k-1) = {:.6} times as often as staying.",
                 self.exact_switch() / self.exact_stay()
             )],
             Host::Ignorant => vec![format!(
                 "Probability that the host does not reveal the car (acceptance rate): \
-                 (n - k)/n = {:.6}.",
+                 (n-k)/n = {:.6}.",
                 self.acceptance()
             )],
         }
